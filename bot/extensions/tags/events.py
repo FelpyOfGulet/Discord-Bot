@@ -23,6 +23,9 @@ class TagEvents(commands.Cog):
     @commands.Cog.listener()
     async def on_tag_create(self, author: discord.User, tag: Tag) -> discord.Message:
         """Logs the creation of new tags."""
+        if author == self.bot.user:
+        return
+        
         embed = discord.Embed(
             title=f"Tag created: {tag.name}",
             color=discord.Color.brand_green(),
@@ -38,6 +41,9 @@ class TagEvents(commands.Cog):
     @commands.Cog.listener()
     async def on_tag_edit(self, author: discord.User, before: Tag, after: Tag) -> discord.Message:
         """Logs updated tags."""
+        if author == self.bot.user:
+        return
+        
         embed_before = discord.Embed(
             title=f"Tag updated: {before.name}",
             color=discord.Color.brand_green(),
@@ -63,6 +69,9 @@ class TagEvents(commands.Cog):
     @commands.Cog.listener()
     async def on_tag_delete(self, user: discord.User, tag: Tag) -> discord.Message:
         """Logs deleted tags."""
+        if author == self.bot.user:
+        return
+        
         embed = discord.Embed(
             title=f"Tag deleted: {tag.name}",
             color=discord.Color.red(),
