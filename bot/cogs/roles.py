@@ -31,6 +31,10 @@ class Roles(commands.Cog):
         if payload.message_id != settings.reaction_roles.message_id:
             return
 
+        #Check if the member is the bot
+        if payload.member == self.bot.user:
+            return 
+            
         if (
             any(role in payload.member.roles for role in self.roles.values())
             or self.lvl_20_role not in payload.member.roles
